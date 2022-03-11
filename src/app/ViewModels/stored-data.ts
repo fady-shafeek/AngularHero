@@ -1,6 +1,5 @@
 export class StoredData {
-constructor (public Name:string, public Img:string){
-
+constructor (public name:string, public imgURL:string,public category: string[]){
 }
     
 }

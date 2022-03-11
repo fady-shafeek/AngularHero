@@ -1,4 +1,14 @@
-<H1>{{"Store Name: "+StoreName}}</H1>
-<img [src]="StoreLogo" alt="" width="50" height="50" class="d-inline-block align-text-top">
-<H3>{{"We offer an explicit discount of:   "+Discount}}</H3>
-<button class="btn btn-dark">Refresh</button>
+<H1>{{"Welcome To: "+storeInfo.name}}</H1>
+
+<button (click)="Show()" type="button" class="btn btn-dark">Toggle</button><br>
+<img *ngIf="IsShown" src="{{storeInfo.imgURL}}" alt="" class="d-inline-block align-text-top">
+
+<h5>Category: </h5>
+<ul>
+    <li *ngFor="let item of storeInfo.category">
+        {{item}}
+    </li>
+</ul>
+
+
+<h4>{{"We offer an explicit discount of:   "+Discount}}</h4>
