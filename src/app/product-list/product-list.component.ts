@@ -3,6 +3,7 @@ import { DiscountOffers } from '../Models/discount-offers';
 import { ICategory } from '../Models/icategory';
 import { IProduct } from '../Models/iproduct';
 
+
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
@@ -30,6 +31,7 @@ export class ProductListComponent implements OnInit {
   catList:ICategory[];
   selectedCatId:number=0;
   noDiscount:boolean=false;
+  clientName:string=''
  
  
   BuyItem(id:number){
