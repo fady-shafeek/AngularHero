@@ -20,10 +20,14 @@
       <tr  *ngFor="let item of prdList">
         <td>{{item?.id}}</td>
         <td>{{item?.name}}</td>
-        <td>{{item?.price}}</td>
+        <td>{{item?.price|currency}}</td>
         <td>{{item?.quantity}}</td>
         <td><img [src]='item?.img'></td>
         <td>{{item?.categoryId}}</td>
+        <td><button type="button" class="btn btn-success" (click)="BuyItem(item.id)">Buy</button></td>
+
       </tr>
     </tbody>
   </table>
+  <h3 *ngIf="!noDiscount"> We offer an explicit discount of {{ discount|percent }}</h3>
+
