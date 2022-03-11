@@ -1,40 +1,74 @@
-<h2>Products</h2>
-<div class="mb-3 col-lg-6">
-  <label for="" class="form-label">Category:</label>
-  <select  class="form-control" name="" id="">
-    <option *ngFor="let cat of catList" [value]="cat.id">{{cat.name}}</option>
-  </select>
-</div>
-<div class="mb-3 col-lg-6">
-  <label for="" class="form-label">Enter Your Name: </label>
-  <input type="text" class="form-control" [(ngModel)]="clientName"  id="" aria-describedby="helpId" placeholder="">
-  <small id="helpId" class="form-text text-muted">Welcome: {{clientName}}</small>
-</div>
-<div col-lg-8>
-<table class="table table-striped table-hover">
-    <thead>
-      <tr>
-        <th scope="col">ID</th>
-        <th scope="col">Name</th>
-        <th scope="col">Price</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Image</th>
-        <th scope="col">Category ID</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr  *ngFor="let item of prdList">
-        <td>{{item?.id}}</td>
-        <td>{{item?.name}}</td>
-        <td>{{item?.price|currency}}</td>
-        <td>{{item?.quantity}}</td>
-        <td><img [src]='item?.img'></td>
-        <td>{{item?.categoryId}}</td>
-        <td><button type="button" class="btn btn-success" (click)="BuyItem(item.id)">Buy</button></td>
+<div *ngIf="IsShown">
+    <h2>Products</h2>
+    <div class="mb-3 col-lg-6">
+        <label for="" class="form-label">Category:</label>
+        <select class="form-control" name="" id="">
+            <option *ngFor="let cat of catList" [value]="cat.id">{{cat.name}}</option>
+        </select>
+    </div>
+    <div class="mb-3 col-lg-6">
+        <label for="" class="form-label">Enter Your Name: </label>
+        <input type="text" class="form-control" [(ngModel)]="clientName" id="" aria-describedby="helpId" placeholder="">
+        <small id="helpId" class="form-text text-muted">Welcome: {{clientName}}</small>
+    </div>
+    <div col-lg-8>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
 
-      </tr>
-    </tbody>
-  </table>
-  <h3 *ngIf="!noDiscount"> We offer an explicit discount of {{ discount|percent }}</h3>
-</div>
+            <div *ngFor="let item of prdList" class="card" style="width: 18rem; ">
+                <img [src]="item.img" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{item.name}}</h5>
+                    <p class="card-text">{{item?.price|currency}}</p>
+                    <button type="button" (click)="BuyItem(item.name, item.img, item.price)" class="btn btn-primary">Buy</button>
+                </div>
+            </div>
+        </div>
 
+
+
+
+        <!-- <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Image</th>
+                    <th scope="col">Category ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of prdList">
+                    <td>{{item?.id}}</td>
+                    <td>{{item?.name}}</td>
+                    <td>{{item?.price|currency}}</td>
+                    <td>{{item?.quantity}}</td>
+                    <td><img [src]='item?.img'></td>
+                    <td>{{item?.categoryId}}</td>
+                    <td><button type="button" class="btn btn-success"
+                            (click)="BuyItem(item.name, item.img)">Buy</button></td>
+
+                </tr>
+            </tbody>
+        </table> -->
+        <h3 *ngIf="!noDiscount"> We offer an explicit discount of {{ discount|percent }}</h3>
+    </div>
+</div>
+<div *ngIf="!IsShown">
+    <div class="card mb-3" style="max-width: 540px;">
+        <div class="row g-0">
+            <div class="col-md-4">
+                <img [src]="prdimg" class="img-fluid rounded-start" alt="...">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title">Thanks for purchasing from our Store : {{clientName}}</h5>
+                    <p class="card-text">{{prdName}}</p>
+                    <p class="card-text"><small class="text-muted">{{price|currency}}</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <button type="button" (click)="GoBack()" class="btn btn-primary">Go Back</button>
+</div>
