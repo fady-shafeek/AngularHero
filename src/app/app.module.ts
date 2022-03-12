@@ -10,6 +10,8 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { FormsModule } from '@angular/forms';
 import { UsersComponent } from './users/users.component';
 import { PostsComponent } from './posts/posts.component';
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 
 
@@ -21,7 +23,9 @@ import { PostsComponent } from './posts/posts.component';
     FooterComponent,
     ProductListComponent,
     UsersComponent,
-    PostsComponent
+    PostsComponent,
+    RegisterComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
