@@ -11,9 +11,19 @@
         <input type="text" class="form-control" [(ngModel)]="clientName" id="" aria-describedby="helpId" placeholder="">
         <small id="helpId" class="form-text text-muted">Welcome: {{clientName}}</small>
     </div>
+
+    <hr>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <button class="btn btn-secondary me-md-4" type="button" (click)="AllOffers()">All Products</button>
+        <button class="btn btn-secondary me-md-4" type="button" (click)="DiscountOffers()">Discount</button>
+        <button class="btn btn-secondary" type="button" (click)="NoDiscountOffers()">No Discount</button>
+    </div>
+    <hr>
+
+
     <div col-lg-8>
-        <div class="row row-cols-1 row-cols-md-2 g-4">
-            <div *ngFor="let item of prdList" class="card" style="width: 18rem; ">
+        <div class="row row-cols-3 ">
+            <div *ngFor="let item of prdList" class="card col" style="width: 18rem; ">
                 <img [src]="item.img" class="card-img-top" alt="...">
                 <div class="card-img-overlay">
                     <h4><span class="badge rounded-pill bg-primary" *ngIf="item.dis">{{item.dis|percent}} OFF</span>
@@ -29,7 +39,8 @@
                                 class="btn btn-primary ">Buy</button>
                         </div>
                     </div>
-                    <br><br>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
