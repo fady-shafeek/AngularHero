@@ -20,8 +20,8 @@
     </div>
     <hr>
 
-
-    <div col-lg-8>
+    <!-- All Products -->
+    <div col-lg-8 *ngIf="all&&!dis&&!nodis">
         <div class="row row-cols-3 ">
             <div *ngFor="let item of prdList" class="card col" style="width: 18rem; ">
                 <img [src]="item.img" class="card-img-top" alt="...">
@@ -45,6 +45,70 @@
             </div>
         </div>
     </div>
+
+    <!-- Discount -->
+    <div col-lg-8 *ngIf="!all&&dis&&!nodis">
+        <div class="row row-cols-3 " *ngFor="let item of prdList">
+            <div  class="card col" style="width: 18rem; " *ngIf="item.dis">
+                <div >
+                    <img [src]="item.img" class="card-img-top" alt="...">
+                    <div class="card-img-overlay">
+                        <h4><span class="badge rounded-pill bg-primary" *ngIf="item.dis">{{item.dis|percent}} OFF</span>
+                        </h4>
+                    </div>
+
+                    <div class="card-body">
+                        <h5 class="card-title">{{item.name}}</h5>
+                        <p class="card-text">{{item?.price|currency}}</p>
+                        <div class="card-img-overlay">
+                            <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                            <div class="d-grid gap-2">
+                                <button type="button" (click)="BuyItem(item.name, item.img, item.price)"
+                                    class="btn btn-primary ">Buy</button>
+                            </div>
+                        </div>
+                        <br>
+                        <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+        <!-- No Discount -->
+        <div col-lg-8 *ngIf="!all&&!dis&&nodis">
+            <div class="row row-cols-3 " *ngFor="let item of prdList">
+                <div  class="card col" style="width: 18rem; ">
+                    <div *ngIf="!item.dis">
+                        <img [src]="item.img" class="card-img-top" alt="...">
+                        <div class="card-img-overlay">
+                            <h4><span class="badge rounded-pill bg-primary" *ngIf="item.dis">{{item.dis|percent}} OFF</span>
+                            </h4>
+                        </div>
+    
+                        <div class="card-body">
+                            <h5 class="card-title">{{item.name}}</h5>
+                            <p class="card-text">{{item?.price|currency}}</p>
+                            <div class="card-img-overlay">
+                                <br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+                                <div class="d-grid gap-2">
+                                    <button type="button" (click)="BuyItem(item.name, item.img, item.price)"
+                                        class="btn btn-primary ">Buy</button>
+                                </div>
+                            </div>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+
+
 </div>
 
 <div *ngIf="!IsShown">
