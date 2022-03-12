@@ -15,10 +15,10 @@ export class ProductListComponent implements OnInit {
     this.discount=DiscountOffers.B;
 
     this.prdList=[
-      {id:1, name:'Iphone 6',price:4000, quantity:2, img:'https://picsum.photos/200' ,categoryId:1},
-      {id:2, name:'Samsung S21',price:5000, quantity:1, img:'https://picsum.photos/201' ,categoryId:2},
-      {id:3, name:'Iphone 11',price:20000, quantity:1, img:'https://picsum.photos/202' ,categoryId:1},
-      {id:4, name:'OnePlus 6',price:8000, quantity:2, img:'https://picsum.photos/199' ,categoryId:3}
+      {id:1, name:'Iphone 6',price:4000, quantity:2, img:'https://picsum.photos/200' ,categoryId:1, dis:DiscountOffers.A},
+      {id:2, name:'Samsung S21',price:5000, quantity:1, img:'https://picsum.photos/201' ,categoryId:2,dis:DiscountOffers.B},
+      {id:3, name:'Iphone 11',price:20000, quantity:1, img:'https://picsum.photos/202' ,categoryId:1,dis:DiscountOffers.A},
+      {id:4, name:'OnePlus 6',price:8000, quantity:2, img:'https://picsum.photos/199' ,categoryId:3,dis:DiscountOffers.B}
     ];
     this.catList=[
       {id:1,name:'Apple'},

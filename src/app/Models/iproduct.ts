@@ -1,3 +1,4 @@
+import { DiscountOffers } from "./discount-offers";
 export interface IProduct {
     id:number;
     name:string;
@@ -5,5 +6,6 @@ export interface IProduct {
     quantity:number;
     img:string;
     categoryId:number;
+    dis:DiscountOffers;
 }
 
